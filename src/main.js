@@ -2,14 +2,13 @@ const $navList = $(".navList");
 const $lastLi = $navList.find("li.last");
 const x = localStorage.getItem("x");
 const xObject = JSON.parse(x); //parse把字符串变为对象
-const hashMap = xObject || [
-  {
+const hashMap = xObject || [{
     logo: "A",
     url: "https://www.acfun.cn",
   },
   {
     logo: "B",
-    url: "bilibili.com",
+    url: "https://www.bilibili.com",
   },
 ];
 const simplifyUrl = (url) => {
@@ -63,7 +62,9 @@ window.onbeforeunload = () => {
   localStorage.setItem("x", string);
 };
 $(document).on("keypress", (e) => {
-  const { key } = e;
+  const {
+    key
+  } = e;
   for (let i = 0; i < hashMap.length; i++) {
     if (hashMap[i].logo.toLowerCase() === key) {
       window.open(hashMap[i].url);
