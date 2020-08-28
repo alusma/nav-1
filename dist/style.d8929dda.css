@@ -71,9 +71,18 @@ body {
     width: 100%;
     margin-right: 10px;
     height: 40px;
-    padding: 0 10px;
-    border-radius: 4px;
+    padding: 0 25px;
+    border-radius: 50px;
     white-space: normal;
+    /* 处理元素中的空白，合并空白 */
+}
+
+.searchIcon .icon {
+    position: absolute;
+    display: flex;
+    margin-left: 7px;
+    height: 40px;
+
 }
 
 .searchForm>button {
@@ -81,7 +90,7 @@ body {
     background: #0282B9;
     color: white;
     white-space: nowrap;
-    border-radius: 4px;
+    border-radius: 50px;
     padding: 0 10px;
     font-size: 16px;
 }
@@ -113,7 +122,7 @@ body {
 }
 
 .navList .site {
-    border-radius: 4px;
+    border-radius: 10%;
     padding: 20px 0;
     width: 160px;
     display: flex;
@@ -156,6 +165,8 @@ body {
 
 .navList .addButton {
     width: 160px;
+    border-radius: 10%;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -184,4 +195,8 @@ body {
     align-items: center;
 }
 
-/*# sourceMappingURL=style.da1bea0b.css.map */
+.site>.logo>img {
+    width: 100%;
+}
+
+/*# sourceMappingURL=style.d8929dda.css.map */

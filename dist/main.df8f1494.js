@@ -128,7 +128,7 @@ var hashMap = xObject || [{
   url: "https://www.acfun.cn"
 }, {
   logo: "B",
-  url: "bilibili.com"
+  url: "https://www.bilibili.com"
 }];
 
 var simplifyUrl = function simplifyUrl(url) {
@@ -139,7 +139,17 @@ var render = function render() {
   $navList.find("li:not(.last)").remove(); //唯独不要最后一个
 
   hashMap.forEach(function (node, index) {
-    var $li = $("<li>\n            <div class=\"site\">\n                      <div class=\"logo\">".concat(node.logo[0], "</div>\n                      <div class=\"link\">").concat(simplifyUrl(node.url), "</div>\n                     <div class=\"close\"> <svg class=\"icon\" >\n    <use xlink:href=\"#icon-close\"></use>\n</svg>\n</div>\n</div>\n            \n            </li>")).insertBefore($lastLi);
+    //     const $li = $(`<li>
+    //             <div class="site">
+    //                       <div class="logo">${node.logo[0]}</div>
+    //                       <div class="link">${simplifyUrl(node.url)}</div>
+    //                      <div class="close"> <svg class="icon" >
+    //     <use xlink:href="#icon-close"></use>
+    // </svg>
+    // </div>
+    // </div>
+    // </li>`).insertBefore($lastLi);
+    var $li = $("<li>\n<div class=\"site\">\n          <div class=\"logo\"><img src=\"".concat(node.url, "/favicon.ico\" alt=\"\"></div>\n          <div class=\"link\">").concat(simplifyUrl(node.url), "</div>\n         <div class=\"close\"> <svg class=\"icon\" >\n<use xlink:href=\"#icon-close\"></use>\n</svg>\n</div>\n</div>\n</li>")).insertBefore($lastLi);
     $li.on("click", function () {
       window.open(node.url);
     });
@@ -185,4 +195,4 @@ $(document).on("keypress", function (e) {
   }
 });
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.567ae46d.js.map
+//# sourceMappingURL=main.df8f1494.js.map
