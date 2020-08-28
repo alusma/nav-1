@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    
     <header class="navHeader">
       <form
         class="searchForm"
@@ -26,9 +27,15 @@
         action="https://www.baidu.com/s"
         target="_blank"
       >
-        <input name="wd" type="text" />
+      <div class="searchIcon">
+        <svg class="icon">
+          <use xlink:href="#icon-search"></use>
+        </svg>
+      </div>
+        <input name="wd" type="text"  placeholder=百度一下   >
         <button type="submit">搜索</button>
       </form>
+      </div>
     </header class="header">
     <main class="navMain">
       <ul class="navList">
@@ -46,8 +53,9 @@
         </li>
       </ul>
     </main>
-    <script src="//at.alicdn.com/t/font_2019314_b3zr8yvj7cd.js"></script>
+    <script src="//at.alicdn.com/t/font_2019314_xz5n53sd6ta.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="main.js"></script>
+    
   </body>
 </html>

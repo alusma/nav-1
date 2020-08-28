@@ -22,17 +22,26 @@ const simplifyUrl = (url) => {
 const render = () => {
   $navList.find("li:not(.last)").remove(); //唯独不要最后一个
   hashMap.forEach((node, index) => {
+    //     const $li = $(`<li>
+    //             <div class="site">
+    //                       <div class="logo">${node.logo[0]}</div>
+    //                       <div class="link">${simplifyUrl(node.url)}</div>
+    //                      <div class="close"> <svg class="icon" >
+    //     <use xlink:href="#icon-close"></use>
+    // </svg>
+    // </div>
+    // </div>
+    // </li>`).insertBefore($lastLi);
     const $li = $(`<li>
-            <div class="site">
-                      <div class="logo">${node.logo[0]}</div>
-                      <div class="link">${simplifyUrl(node.url)}</div>
-                     <div class="close"> <svg class="icon" >
-    <use xlink:href="#icon-close"></use>
+<div class="site">
+          <div class="logo"><img src="${node.url}/favicon.ico" alt=""></div>
+          <div class="link">${simplifyUrl(node.url)}</div>
+         <div class="close"> <svg class="icon" >
+<use xlink:href="#icon-close"></use>
 </svg>
 </div>
 </div>
-            
-            </li>`).insertBefore($lastLi);
+</li>`).insertBefore($lastLi);
     $li.on("click", () => {
       window.open(node.url);
     });
