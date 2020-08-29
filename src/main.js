@@ -3,11 +3,11 @@ const $lastLi = $navList.find("li.last");
 const x = localStorage.getItem("x");
 const xObject = JSON.parse(x); //parse把字符串变为对象
 const hashMap = xObject || [{
-    logo: "A",
+    logo: "",
     url: "https://www.acfun.cn",
   },
   {
-    logo: "B",
+    logo: "",
     url: "https://www.bilibili.com",
   },
 ];
@@ -22,20 +22,10 @@ const simplifyUrl = (url) => {
 const render = () => {
   $navList.find("li:not(.last)").remove(); //唯独不要最后一个
   hashMap.forEach((node, index) => {
-    //     const $li = $(`<li>
-    //             <div class="site">
-    //                       <div class="logo">${node.logo[0]}</div>
-    //                       <div class="link">${simplifyUrl(node.url)}</div>
-    //                      <div class="close"> <svg class="icon" >
-    //     <use xlink:href="#icon-close"></use>
-    // </svg>
-    // </div>
-    // </div>
-    // </li>`).insertBefore($lastLi);
     const $li = $(`<li>
 <div class="site">
           <div class="logo"><img src="${node.url}/favicon.ico" alt=""></div>
-          <div class="link">${simplifyUrl(node.url)}</div>
+          <div class="link" >${simplifyUrl(node.url)}</div>
          <div class="close"> <svg class="icon" >
 <use xlink:href="#icon-close"></use>
 </svg>
@@ -43,7 +33,7 @@ const render = () => {
 </div>
 </li>`).insertBefore($lastLi);
     $li.on("click", () => {
-      window.open(node.url);
+      window.open(node.url, target = "_self");
     });
     $li.on("click", ".close", (e) => {
       e.stopPropagation(); //阻止冒泡
@@ -70,13 +60,17 @@ window.onbeforeunload = () => {
   const string = JSON.stringify(hashMap); //把对象变为string
   localStorage.setItem("x", string);
 };
+
 $(document).on("keypress", (e) => {
   const {
     key
   } = e;
   for (let i = 0; i < hashMap.length; i++) {
-    if (hashMap[i].logo.toLowerCase() === key) {
-      window.open(hashMap[i].url);
+    if (document.activeElement.id !== "navInp") {
+      if (hashMap[i].logo.toLowerCase() === key) {
+        open(hashMap[i].url, target = "_self")
+        // window.location.href = hashMap[i].url;
+      }
     }
   }
-});
+})

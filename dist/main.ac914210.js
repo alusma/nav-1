@@ -124,10 +124,10 @@ var x = localStorage.getItem("x");
 var xObject = JSON.parse(x); //parse把字符串变为对象
 
 var hashMap = xObject || [{
-  logo: "A",
+  logo: "",
   url: "https://www.acfun.cn"
 }, {
-  logo: "B",
+  logo: "",
   url: "https://www.bilibili.com"
 }];
 
@@ -139,19 +139,9 @@ var render = function render() {
   $navList.find("li:not(.last)").remove(); //唯独不要最后一个
 
   hashMap.forEach(function (node, index) {
-    //     const $li = $(`<li>
-    //             <div class="site">
-    //                       <div class="logo">${node.logo[0]}</div>
-    //                       <div class="link">${simplifyUrl(node.url)}</div>
-    //                      <div class="close"> <svg class="icon" >
-    //     <use xlink:href="#icon-close"></use>
-    // </svg>
-    // </div>
-    // </div>
-    // </li>`).insertBefore($lastLi);
-    var $li = $("<li>\n<div class=\"site\">\n          <div class=\"logo\"><img src=\"".concat(node.url, "/favicon.ico\" alt=\"\"></div>\n          <div class=\"link\">").concat(simplifyUrl(node.url), "</div>\n         <div class=\"close\"> <svg class=\"icon\" >\n<use xlink:href=\"#icon-close\"></use>\n</svg>\n</div>\n</div>\n</li>")).insertBefore($lastLi);
+    var $li = $("<li>\n<div class=\"site\">\n          <div class=\"logo\"><img src=\"".concat(node.url, "/favicon.ico\" alt=\"\"></div>\n          <div class=\"link\" >").concat(simplifyUrl(node.url), "</div>\n         <div class=\"close\"> <svg class=\"icon\" >\n<use xlink:href=\"#icon-close\"></use>\n</svg>\n</div>\n</div>\n</li>")).insertBefore($lastLi);
     $li.on("click", function () {
-      window.open(node.url);
+      window.open(node.url, target = "_self");
     });
     $li.on("click", ".close", function (e) {
       e.stopPropagation(); //阻止冒泡
@@ -189,10 +179,12 @@ $(document).on("keypress", function (e) {
   var key = e.key;
 
   for (var i = 0; i < hashMap.length; i++) {
-    if (hashMap[i].logo.toLowerCase() === key) {
-      window.open(hashMap[i].url);
+    if (document.activeElement.id !== "navInp") {
+      if (hashMap[i].logo.toLowerCase() === key) {
+        open(hashMap[i].url, target = "_self"); // window.location.href = hashMap[i].url;
+      }
     }
   }
 });
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.df8f1494.js.map
+//# sourceMappingURL=main.ac914210.js.map

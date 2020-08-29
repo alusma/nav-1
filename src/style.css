@@ -77,6 +77,12 @@ body {
     /* 处理元素中的空白，合并空白 */
 }
 
+.searchForm>input:focus {
+    outline: none;
+    border-color: #03a9f4;
+    box-shadow: 0 0 15px #03a9f4;
+}
+
 .searchIcon .icon {
     position: absolute;
     display: flex;
@@ -95,6 +101,9 @@ body {
     font-size: 16px;
 }
 
+.searchForm>button:focus {
+    outline: none;
+}
 
 .navList {
     display: flex;
